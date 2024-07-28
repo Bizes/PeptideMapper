@@ -40,19 +40,22 @@ def split_and_expand(df, column):
 # Main Function body
 if __name__ == '__main__':    
     ###########################################################
-    wd = r'C:\Users\User\OneDrive\Uni\PhD\Coding'
-    filename = "NH_074_MTS.xlsx"
+    wd = r'Put your Working directory here!'
+    filename = r'Put filename here e.g. "FileToMap.xlsx"'
     ##########################################################  
+    # Change only if necessary. See FAQ
+    Database = sys.path[0] + r'\Database\HomoSapiens_MasterProteinSequences.xlsx'
+    ##########################################################   
     print('###############################################################')
     print("Reading: " + filename)
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore", category=UserWarning, module=re.escape('openpyxl.styles.stylesheet'))
         df = pd.read_excel(f'{wd}/{filename}', engine='openpyxl')
-        DatabaseLoc = sys.path[0] + r'\Database\HomoSapiens_MasterProteinSequences.xlsx'
-        MasterProteins = pd.read_excel(DatabaseLoc)
+        # Read database 
+        MasterProteins = pd.read_excel(Database)
 
     print ("File successfully loaded")
-    # Read database 
+
 
     # Split up the Master Protein Accesion Column. This is necessary since some peptides
     # are mapped to multiple proteins.
